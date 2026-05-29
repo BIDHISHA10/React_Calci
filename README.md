@@ -1,5 +1,5 @@
 # Ex04 Simple Calculator - React Project
-## Date:
+## Date:29-05-2026
 
 ## AIM
 To  develop a Simple Calculator using React.js with clean and responsive design, ensuring a smooth user experience across different screen sizes.
@@ -47,9 +47,184 @@ Upload to GitHub Pages for free hosting.
 
 ## PROGRAM
 
+App.jsx
+```
+import React, { useState } from "react";
+import "./App.css";
 
+
+function App() {
+  const [input, setInput] = useState("");
+  const [result, setResult] = useState("");
+
+  const handleClick = (value) => {
+    setInput((prev) => prev + value);
+  };
+
+  const handleClear = () => {
+    setInput("");
+    setResult("");
+  };
+
+  const handleCalculate = () => {
+    try {
+      const evalResult = eval(input); 
+      setResult(evalResult.toString());
+    } catch {
+      setResult("Error");
+    }
+  };
+
+  return (
+    <div className="calculator-container">
+      <h1>Calculator Using React</h1>
+      
+
+      <div className="calculator">
+        <div className="display-box">
+          <input type="text" value={input} readOnly className="display" />
+          {result && <div className="result">= {result}</div>}
+        </div>
+
+        <div className="buttons">
+          <button onClick={() => handleClick("7")}>7</button>
+          <button onClick={() => handleClick("8")}>8</button>
+          <button onClick={() => handleClick("9")}>9</button>
+          <button onClick={() => handleClick("/")}>÷</button>
+
+          <button onClick={() => handleClick("4")}>4</button>
+          <button onClick={() => handleClick("5")}>5</button>
+          <button onClick={() => handleClick("6")}>6</button>
+          <button onClick={() => handleClick("*")}>×</button>
+
+          <button onClick={() => handleClick("1")}>1</button>
+          <button onClick={() => handleClick("2")}>2</button>
+          <button onClick={() => handleClick("3")}>3</button>
+          <button onClick={() => handleClick("-")}>−</button>
+
+          <button onClick={() => handleClick("0")}>0</button>
+          <button onClick={() => handleClick(".")}>.</button>
+          <button onClick={handleCalculate}>=</button>
+          <button onClick={() => handleClick("+")}>+</button>
+
+          <button className="clear" onClick={handleClear}>
+            Clear
+          </button>
+        </div>
+      </div>
+      <h4>Created by:Bidhisha</h4>
+    </div>
+    
+  );
+}
+
+export default App;
+
+
+```
+App.css
+```
+
+body{
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.calculator-container {
+  text-align: center;
+  margin: 150px;
+  font-family: Arial, sans-serif;
+}
+
+h2 {
+  margin-bottom: 5px;
+}
+
+p {
+  font-size: 14px;
+  margin: 3px 0;
+}
+
+
+.calculator {
+  background: #f5f5f5;
+  width: 300px;
+  margin: 20px auto;
+  padding: 20px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.display-box {
+  text-align: right;
+  margin-bottom: 15px;
+}
+
+.display {
+  width: 100%;
+  height: 50px;
+  font-size: 20px;
+  text-align: right;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background:white;
+  box-shadow: inset 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.result {
+  margin-top: 5px;
+  font-size: 18px;
+  font-weight: bold;
+  color: #333;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+}
+
+button {
+  padding: 15px;
+  font-size: 18px;
+  border: none;
+  border-radius: 8px;
+  background: salmon;
+  color: white;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+
+button:hover {
+  background: grey;
+}
+
+button.clear {
+  grid-column: span 4;
+  background: black;
+}
+
+button.clear:hover {
+  background: gray;
+}
+
+
+@media (max-width: 400px) {
+  .calculator {
+    width: 90%;
+  }
+
+  button {
+    padding: 12px;
+    font-size: 16px;
+  }
+}
+
+```
 ## OUTPUT
 
+<img width="1912" height="965" alt="image" src="https://github.com/user-attachments/assets/1e6bb9e1-a1d2-46d9-a767-7d4d477f14e4" />
 
 ## RESULT
 The program for developing a simple calculator in React.js is executed successfully.
